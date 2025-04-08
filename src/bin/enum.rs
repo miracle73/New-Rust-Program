@@ -6,12 +6,12 @@ enum Message {
     ChangeColor(u8, u8, u8),
 }
 
-fn compare(a: i32, b: i32) {
-    match a.cmp(&b) {
+fn compare(a: i32, b: i32) -> () {
+    return match a.cmp(&b) {
         Ordering::Less => println!("{} is less than {}", a, b),
         Ordering::Greater => println!("{} is greater than {}", a, b),
         Ordering::Equal => println!("{} is equal to {}", a, b),
-    }
+    };
 }
 fn main() {
     let message = Message::Move { x: 10, y: 20 };
@@ -20,6 +20,8 @@ fn main() {
         Ordering::Greater => println!("{} is greater than {}", 5, 12),
         Ordering::Equal => println!("{} is equal to {}", 5, 12),
     }
+    let a = compare(4, 8);
+    println!("{:?}", a);
 
     match message {
         Message::Quit => println!("Quit the game!"),
