@@ -15,9 +15,11 @@ fn compare(a: i32, b: i32) {
 }
 fn main() {
     let message = Message::Move { x: 10, y: 20 };
-    compare(12, 5);
-    compare(50, 20);
-    compare(30, 10);
+    match 5.cmp(&12) {
+        Ordering::Less => println!("{} is less than {}", 5, 12),
+        Ordering::Greater => println!("{} is greater than {}", 5, 12),
+        Ordering::Equal => println!("{} is equal to {}", 5, 12),
+    }
 
     match message {
         Message::Quit => println!("Quit the game!"),
